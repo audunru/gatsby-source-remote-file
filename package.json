@@ -1,0 +1,58 @@
+{
+  "name": "gatsby-source-remote-file",
+  "description": "Fetch a remote file and use it as a node in Gatsby",
+  "version": "0.1.0",
+  "main": "index.js",
+  "author": "Audun Rundberg <audun@rundberg.no>",
+  "license": "MIT",
+  "dependencies": {
+    "gatsby": "^2.19.17",
+    "gatsby-source-filesystem": "^2.1.48"
+  },
+  "devDependencies": {
+    "@types/jest": "^25.1.2",
+    "@typescript-eslint/eslint-plugin": "^2.19.2",
+    "@typescript-eslint/parser": "^2.19.2",
+    "eslint": "^6.8.0",
+    "eslint-config-prettier": "^6.10.0",
+    "eslint-plugin-prettier": "^3.1.2",
+    "husky": "^4.2.3",
+    "jest": "^25.1.0",
+    "jest-mock-extended": "^1.0.8",
+    "lint-staged": "^10.0.7",
+    "prettier": "^1.19.1",
+    "ts-jest": "^25.2.0",
+    "typescript": "^3.7.2"
+  },
+  "scripts": {
+    "develop": "tsc -w",
+    "build": "tsc",
+    "test": "jest",
+    "type-check": "tsc --noEmit",
+    "lint": "tsc --noEmit && eslint '**/*.{js,ts}' --fix --ignore-path .eslintignore"
+  },
+  "husky": {
+    "hooks": {
+      "pre-commit": "tsc --noEmit && lint-staged"
+    }
+  },
+  "lint-staged": {
+    "*.{js,ts}": [
+      "eslint --fix",
+      "git add"
+    ]
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/audunru/gatsby-source-remote-file.git"
+  },
+  "keywords": [
+    "gatsby",
+    "gatsby-plugin",
+    "gatsby-source-plugin"
+  ],
+  "bugs": {
+    "url": "https://github.com/audunru/gatsby-source-remote-file/issues"
+  },
+  "homepage": "https://github.com/audunru/gatsby-source-remote-file"
+}
