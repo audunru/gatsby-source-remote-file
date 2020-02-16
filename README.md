@@ -1,3 +1,7 @@
+# gatsby-source-remote-file
+
+[![Build Status](https://travis-ci.org/audunru/gatsby-source-remote-file.svg?branch=master)](https://travis-ci.org/audunru/gatsby-source-remote-file)
+
 ## Description
 
 _gatsby-source-remote-file_ is a simple wrapper around `createRemoteFileNode()` from [https://www.gatsbyjs.org/packages/gatsby-source-filesystem/](gatsby-source-filesystem)
