@@ -1,7 +1,7 @@
 {
   "name": "gatsby-source-remote-file",
   "description": "Fetch a remote file and use it as a node in Gatsby",
-  "version": "0.1.4",
+  "version": "0.1.5",
   "main": "index.js",
   "author": "Audun Rundberg <audun@rundberg.no>",
   "license": "MIT",
