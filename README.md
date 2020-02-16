@@ -4,7 +4,7 @@
 
 ## Description
 
-_gatsby-source-remote-file_ is a simple wrapper around `createRemoteFileNode()` from [https://www.gatsbyjs.org/packages/gatsby-source-filesystem/](gatsby-source-filesystem)
+_gatsby-source-remote-file_ is a simple wrapper around `createRemoteFileNode()` from [gatsby-source-filesystem](https://www.gatsbyjs.org/packages/gatsby-source-filesystem/)
 
 Use it to add any URL as a file node in Gatsby, then optionally use a transformer plugin to turn the contents of the URL into other node(s).
 
