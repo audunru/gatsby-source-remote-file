@@ -29,7 +29,7 @@
     "build": "tsc",
     "test": "jest",
     "type-check": "tsc --noEmit",
-    "lint": "tsc --noEmit && eslint '**/*.{js,ts}' --fix --ignore-path .gitignore"
+    "lint": "tsc --noEmit && eslint '**/*.{js,ts}' --ignore-path .gitignore"
   },
   "husky": {
     "hooks": {
@@ -54,5 +54,11 @@
   "bugs": {
     "url": "https://github.com/audunru/gatsby-source-remote-file/issues"
   },
-  "homepage": "https://github.com/audunru/gatsby-source-remote-file"
+  "homepage": "https://github.com/audunru/gatsby-source-remote-file",
+  "files": [
+    "index.d.ts",
+    "index.js",
+    "gatsby-node.d.ts",
+    "gatsby-node.js"
+  ]
 }
