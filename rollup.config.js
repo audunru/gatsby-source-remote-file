@@ -6,7 +6,7 @@ export default {
   input: 'src/gatsby-node.ts',
   output: [
     {
-      file: 'dist/gatsby-node.js',
+      file: pkg.main,
       format: 'cjs',
     },
   ],
