@@ -2,7 +2,10 @@
   "name": "gatsby-source-remote-file",
   "description": "Fetch a remote file and use it as a node in Gatsby",
   "version": "0.1.7",
-  "main": "index.js",
+  "types": "dist/gatsby-node.d.ts",
+  "files": [
+    "dist"
+  ],
   "author": "Audun Rundberg <audun@rundberg.no>",
   "license": "MIT",
   "dependencies": {
@@ -20,13 +23,18 @@
     "jest": "^25.1.0",
     "jest-mock-extended": "^1.0.8",
     "lint-staged": "^10.0.7",
+    "mkdirp": "^1.0.3",
     "prettier": "^1.19.1",
+    "rimraf": "^3.0.2",
+    "rollup": "^1.31.1",
+    "rollup-plugin-terser": "^5.2.0",
+    "rollup-plugin-typescript2": "^0.26.0",
     "ts-jest": "^25.2.0",
     "typescript": "^3.7.2"
   },
   "scripts": {
     "develop": "tsc -w",
-    "build": "tsc",
+    "build": "rimraf dist && mkdirp dist && rollup -c",
     "test": "jest",
     "type-check": "tsc --noEmit",
     "lint": "tsc --noEmit && eslint '**/*.{js,ts}' --ignore-path .gitignore"
@@ -54,11 +62,5 @@
   "bugs": {
     "url": "https://github.com/audunru/gatsby-source-remote-file/issues"
   },
-  "homepage": "https://github.com/audunru/gatsby-source-remote-file",
-  "files": [
-    "index.d.ts",
-    "index.js",
-    "gatsby-node.d.ts",
-    "gatsby-node.js"
-  ]
+  "homepage": "https://github.com/audunru/gatsby-source-remote-file"
 }
