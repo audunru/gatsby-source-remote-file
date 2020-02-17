@@ -4,9 +4,6 @@
   "version": "0.1.7",
   "main": "dist/gatsby-node.js",
   "types": "dist/gatsby-node.d.ts",
-  "files": [
-    "dist"
-  ],
   "author": "Audun Rundberg <audun@rundberg.no>",
   "license": "MIT",
   "dependencies": {
@@ -28,6 +25,8 @@
     "prettier": "^1.19.1",
     "rimraf": "^3.0.2",
     "rollup": "^1.31.1",
+    "rollup-plugin-copy": "^3.3.0",
+    "rollup-plugin-generate-package-json": "^3.2.0",
     "rollup-plugin-terser": "^5.2.0",
     "rollup-plugin-typescript2": "^0.26.0",
     "ts-jest": "^25.2.0",
