@@ -25,7 +25,7 @@ export default {
         description: pkg.description,
         version: pkg.version,
         main: pkg.main.replace('dist/', ''),
-        types: pkg.main.replace('dist/', ''),
+        types: pkg.types.replace('dist/', ''),
         author: pkg.author,
         license: pkg.license,
         repository: pkg.repository,
