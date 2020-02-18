@@ -10,8 +10,9 @@ export type RemotePluginOptions = PluginOptions &
 export const sourceNodes = (
   { actions: { createNode }, createNodeId, store, cache, reporter }: SourceNodesArgs,
   { url, name = 'remote', parentNodeId, ext, auth, httpHeaders }: RemotePluginOptions
-) =>
-  createRemoteFileNode({
+) => {
+  if (!url) throw new Error('Plugin option "url" is required');
+  return createRemoteFileNode({
     ...{
       url,
       store,
@@ -26,3 +27,4 @@ export const sourceNodes = (
     ...(auth && { auth }),
     ...(httpHeaders && { httpHeaders }),
   });
+};

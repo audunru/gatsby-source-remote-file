@@ -14,6 +14,39 @@ describe('gatsby-source-remote-file', () => {
   const sourceNodesArgs = mock<SourceNodesArgs>();
   const pluginOptions = mock<RemotePluginOptions>();
 
+  it('throws error if url is undefined', () => {
+    expect(() => {
+      sourceNodes(sourceNodesArgs, {
+        ...pluginOptions,
+        ...{
+          url: undefined,
+        },
+      });
+    }).toThrow(new Error('Plugin option "url" is required'));
+  });
+
+  it('throws error if url is null', () => {
+    expect(() => {
+      sourceNodes(sourceNodesArgs, {
+        ...pluginOptions,
+        ...{
+          url: null,
+        },
+      });
+    }).toThrow(new Error('Plugin option "url" is required'));
+  });
+
+  it('throws error if url is empty string', () => {
+    expect(() => {
+      sourceNodes(sourceNodesArgs, {
+        ...pluginOptions,
+        ...{
+          url: '',
+        },
+      });
+    }).toThrow(new Error('Plugin option "url" is required'));
+  });
+
   it('calls createRemoteFileNode with provided url', () => {
     sourceNodes(sourceNodesArgs, {
       ...pluginOptions,
@@ -34,6 +67,7 @@ describe('gatsby-source-remote-file', () => {
     sourceNodes(sourceNodesArgs, {
       ...pluginOptions,
       ...{
+        url: 'https://vandelay-industries.com/api/exports',
         name: 'latex',
       },
     });
@@ -50,6 +84,7 @@ describe('gatsby-source-remote-file', () => {
     sourceNodes(sourceNodesArgs, {
       ...pluginOptions,
       ...{
+        url: 'https://vandelay-industries.com/api/exports',
         parentNodeId: 'chips',
       },
     });
@@ -66,6 +101,7 @@ describe('gatsby-source-remote-file', () => {
     sourceNodes(sourceNodesArgs, {
       ...pluginOptions,
       ...{
+        url: 'https://vandelay-industries.com/api/exports',
         ext: '.bmp',
       },
     });
@@ -82,6 +118,7 @@ describe('gatsby-source-remote-file', () => {
     sourceNodes(sourceNodesArgs, {
       ...pluginOptions,
       ...{
+        url: 'https://vandelay-industries.com/api/exports',
         // eslint-disable-next-line @typescript-eslint/camelcase
         auth: { htaccess_user: `art@vandelay-industries.com`, htaccess_pass: `I am an Architect` },
       },
@@ -100,6 +137,7 @@ describe('gatsby-source-remote-file', () => {
     sourceNodes(sourceNodesArgs, {
       ...pluginOptions,
       ...{
+        url: 'https://vandelay-industries.com/api/exports',
         httpHeaders: { Authorization: 'Bearer someAccessToken' },
       },
     });
