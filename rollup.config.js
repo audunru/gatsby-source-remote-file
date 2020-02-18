@@ -2,7 +2,10 @@ import typescript from 'rollup-plugin-typescript2';
 import { terser } from 'rollup-plugin-terser';
 import copy from 'rollup-plugin-copy';
 import generatePackageJson from 'rollup-plugin-generate-package-json';
+import gitVersion from 'git-tag-version';
 import pkg from './package.json';
+
+const tag = gitVersion();
 
 export default {
   input: 'src/gatsby-node.ts',
@@ -23,7 +26,7 @@ export default {
       baseContents: pkg => ({
         name: pkg.name,
         description: pkg.description,
-        version: pkg.version,
+        version: tag,
         main: pkg.main.replace('dist/', ''),
         types: pkg.types.replace('dist/', ''),
         author: pkg.author,
