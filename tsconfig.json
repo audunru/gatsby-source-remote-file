@@ -6,6 +6,7 @@
     "lib": ["dom", "esnext"],
     "module": "esnext",
     "moduleResolution": "node",
+    "esModuleInterop": true,
     "outDir": ".",
     "strict": true,
     "target": "es5"
