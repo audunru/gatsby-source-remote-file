@@ -37,6 +37,7 @@
     "develop": "tsc -w",
     "build": "rimraf dist && mkdirp dist && rollup -c",
     "test": "jest",
+    "test:watch": "jest --watch",
     "type-check": "tsc --noEmit",
     "lint": "tsc --noEmit && eslint '**/*.{js,ts}' --ignore-path .gitignore"
   },
