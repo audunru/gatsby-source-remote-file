@@ -1,51 +1,18 @@
-import { mock } from 'jest-mock-extended';
+import { mock, mockDeep } from 'jest-mock-extended';
 import { SourceNodesArgs } from 'gatsby';
 import { sourceNodes, RemotePluginOptions } from '../src/gatsby-node';
 
 jest.mock('gatsby-source-filesystem', () => ({
   __esModule: true,
   default: 'mockedDefaultExport',
-  createRemoteFileNode: jest.fn(),
+  createRemoteFileNode: jest.fn().mockResolvedValue('mocked-file-node'),
 }));
 
 import { createRemoteFileNode } from 'gatsby-source-filesystem';
 
-describe('gatsby-source-remote-file', () => {
-  const sourceNodesArgs = mock<SourceNodesArgs>();
+describe('gatsby-source-remote-file options', () => {
+  const sourceNodesArgs = mockDeep<SourceNodesArgs>();
   const pluginOptions = mock<RemotePluginOptions>();
-
-  it('throws error if url is undefined', () => {
-    expect(() => {
-      sourceNodes(sourceNodesArgs, {
-        ...pluginOptions,
-        ...{
-          url: undefined,
-        },
-      });
-    }).toThrow(new Error('Plugin option "url" is required'));
-  });
-
-  it('throws error if url is null', () => {
-    expect(() => {
-      sourceNodes(sourceNodesArgs, {
-        ...pluginOptions,
-        ...{
-          url: null,
-        },
-      });
-    }).toThrow(new Error('Plugin option "url" is required'));
-  });
-
-  it('throws error if url is empty string', () => {
-    expect(() => {
-      sourceNodes(sourceNodesArgs, {
-        ...pluginOptions,
-        ...{
-          url: '',
-        },
-      });
-    }).toThrow(new Error('Plugin option "url" is required'));
-  });
 
   it('calls createRemoteFileNode with provided url', () => {
     sourceNodes(sourceNodesArgs, {
