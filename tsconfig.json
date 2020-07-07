@@ -1,13 +1,14 @@
 {
   "compilerOptions": {
+    "skipLibCheck": true,
     "declaration": true,
-    "declarationDir": ".",
+    "declarationDir": "dist",
     "forceConsistentCasingInFileNames": true,
     "lib": ["dom", "esnext"],
     "module": "esnext",
     "moduleResolution": "node",
     "esModuleInterop": true,
-    "outDir": ".",
+    "outDir": "dist",
     "strict": true,
     "target": "es5"
   },
