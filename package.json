@@ -39,7 +39,7 @@
     "test": "jest",
     "test:watch": "jest --watch",
     "type-check": "tsc --noEmit",
-    "lint": "tsc --noEmit && eslint '**/*.{js,ts}' --ignore-path .gitignore"
+    "lint": "tsc --noEmit && eslint . --ext .js,.ts --fix --ignore-path .gitignore"
   },
   "husky": {
     "hooks": {
