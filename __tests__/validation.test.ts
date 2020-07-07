@@ -1,18 +1,18 @@
-import { mock, mockDeep } from 'jest-mock-extended';
-import { SourceNodesArgs } from 'gatsby';
-import { sourceNodes, RemotePluginOptions } from '../src/gatsby-node';
+import { mock, mockDeep } from "jest-mock-extended";
+import { SourceNodesArgs } from "gatsby";
+import { sourceNodes, RemotePluginOptions } from "../src/gatsby-node";
 
-jest.mock('gatsby-source-filesystem', () => ({
+jest.mock("gatsby-source-filesystem", () => ({
   __esModule: true,
-  default: 'mockedDefaultExport',
-  createRemoteFileNode: jest.fn().mockResolvedValue('mocked-file-node'),
+  default: "mockedDefaultExport",
+  createRemoteFileNode: jest.fn().mockResolvedValue("mocked-file-node"),
 }));
 
-describe('validation', () => {
+describe("validation", () => {
   const sourceNodesArgs = mockDeep<SourceNodesArgs>();
   const pluginOptions = mock<RemotePluginOptions>();
 
-  it('calls reporter.panicOnBuild if url is undefined', () => {
+  it("calls reporter.panicOnBuild if url is undefined", () => {
     sourceNodes(sourceNodesArgs, {
       ...pluginOptions,
       ...{
@@ -26,7 +26,7 @@ describe('validation', () => {
     );
   });
 
-  it('calls reporter.panicOnBuild if url is null', () => {
+  it("calls reporter.panicOnBuild if url is null", () => {
     sourceNodes(sourceNodesArgs, {
       ...pluginOptions,
       ...{
@@ -40,11 +40,11 @@ describe('validation', () => {
     );
   });
 
-  it('calls reporter.panicOnBuild if url is empty string', () => {
+  it("calls reporter.panicOnBuild if url is empty string", () => {
     sourceNodes(sourceNodesArgs, {
       ...pluginOptions,
       ...{
-        url: '',
+        url: "",
       },
     });
     expect(sourceNodesArgs.reporter.panicOnBuild).toBeCalledTimes(1);

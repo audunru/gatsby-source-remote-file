@@ -1,92 +1,91 @@
-import { mock, mockDeep } from 'jest-mock-extended';
-import { SourceNodesArgs } from 'gatsby';
-import { sourceNodes, RemotePluginOptions } from '../src/gatsby-node';
+import { mock, mockDeep } from "jest-mock-extended";
+import { SourceNodesArgs } from "gatsby";
+import { sourceNodes, RemotePluginOptions } from "../src/gatsby-node";
 
-jest.mock('gatsby-source-filesystem', () => ({
+jest.mock("gatsby-source-filesystem", () => ({
   __esModule: true,
-  default: 'mockedDefaultExport',
-  createRemoteFileNode: jest.fn().mockResolvedValue('mocked-file-node'),
+  default: "mockedDefaultExport",
+  createRemoteFileNode: jest.fn().mockResolvedValue("mocked-file-node"),
 }));
 
-import { createRemoteFileNode } from 'gatsby-source-filesystem';
+import { createRemoteFileNode } from "gatsby-source-filesystem";
 
-describe('gatsby-source-remote-file options', () => {
+describe("gatsby-source-remote-file options", () => {
   const sourceNodesArgs = mockDeep<SourceNodesArgs>();
   const pluginOptions = mock<RemotePluginOptions>();
 
-  it('calls createRemoteFileNode with provided url', () => {
+  it("calls createRemoteFileNode with provided url", () => {
     sourceNodes(sourceNodesArgs, {
       ...pluginOptions,
       ...{
-        url: 'https://vandelay-industries.com/api/exports',
+        url: "https://vandelay-industries.com/api/exports",
       },
     });
 
     expect(createRemoteFileNode).toHaveBeenCalledTimes(1);
     expect(createRemoteFileNode).toHaveBeenCalledWith(
       expect.objectContaining({
-        url: 'https://vandelay-industries.com/api/exports',
+        url: "https://vandelay-industries.com/api/exports",
       })
     );
   });
 
-  it('calls createRemoteFileNode with provided name', () => {
+  it("calls createRemoteFileNode with provided name", () => {
     sourceNodes(sourceNodesArgs, {
       ...pluginOptions,
       ...{
-        url: 'https://vandelay-industries.com/api/exports',
-        name: 'latex',
+        url: "https://vandelay-industries.com/api/exports",
+        name: "latex",
       },
     });
 
     expect(createRemoteFileNode).toHaveBeenCalledTimes(1);
     expect(createRemoteFileNode).toHaveBeenCalledWith(
       expect.objectContaining({
-        name: 'latex',
+        name: "latex",
       })
     );
   });
 
-  it('calls createRemoteFileNode with provided parentNodeId', () => {
+  it("calls createRemoteFileNode with provided parentNodeId", () => {
     sourceNodes(sourceNodesArgs, {
       ...pluginOptions,
       ...{
-        url: 'https://vandelay-industries.com/api/exports',
-        parentNodeId: 'chips',
+        url: "https://vandelay-industries.com/api/exports",
+        parentNodeId: "chips",
       },
     });
 
     expect(createRemoteFileNode).toHaveBeenCalledTimes(1);
     expect(createRemoteFileNode).toHaveBeenCalledWith(
       expect.objectContaining({
-        parentNodeId: 'chips',
+        parentNodeId: "chips",
       })
     );
   });
 
-  it('calls createRemoteFileNode with provided extension', () => {
+  it("calls createRemoteFileNode with provided extension", () => {
     sourceNodes(sourceNodesArgs, {
       ...pluginOptions,
       ...{
-        url: 'https://vandelay-industries.com/api/exports',
-        ext: '.bmp',
+        url: "https://vandelay-industries.com/api/exports",
+        ext: ".bmp",
       },
     });
 
     expect(createRemoteFileNode).toHaveBeenCalledTimes(1);
     expect(createRemoteFileNode).toHaveBeenCalledWith(
       expect.objectContaining({
-        ext: '.bmp',
+        ext: ".bmp",
       })
     );
   });
 
-  it('calls createRemoteFileNode with provided username and password', () => {
+  it("calls createRemoteFileNode with provided username and password", () => {
     sourceNodes(sourceNodesArgs, {
       ...pluginOptions,
       ...{
-        url: 'https://vandelay-industries.com/api/exports',
-        // eslint-disable-next-line @typescript-eslint/camelcase
+        url: "https://vandelay-industries.com/api/exports",
         auth: { htaccess_user: `art@vandelay-industries.com`, htaccess_pass: `I am an Architect` },
       },
     });
@@ -94,25 +93,24 @@ describe('gatsby-source-remote-file options', () => {
     expect(createRemoteFileNode).toHaveBeenCalledTimes(1);
     expect(createRemoteFileNode).toHaveBeenCalledWith(
       expect.objectContaining({
-        // eslint-disable-next-line @typescript-eslint/camelcase
         auth: { htaccess_user: `art@vandelay-industries.com`, htaccess_pass: `I am an Architect` },
       })
     );
   });
 
-  it('calls createRemoteFileNode with provided headers', () => {
+  it("calls createRemoteFileNode with provided headers", () => {
     sourceNodes(sourceNodesArgs, {
       ...pluginOptions,
       ...{
-        url: 'https://vandelay-industries.com/api/exports',
-        httpHeaders: { Authorization: 'Bearer someAccessToken' },
+        url: "https://vandelay-industries.com/api/exports",
+        httpHeaders: { Authorization: "Bearer someAccessToken" },
       },
     });
 
     expect(createRemoteFileNode).toHaveBeenCalledTimes(1);
     expect(createRemoteFileNode).toHaveBeenCalledWith(
       expect.objectContaining({
-        httpHeaders: { Authorization: 'Bearer someAccessToken' },
+        httpHeaders: { Authorization: "Bearer someAccessToken" },
       })
     );
   });
