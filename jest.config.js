@@ -8,4 +8,9 @@ module.exports = {
       diagnostics: false,
     },
   },
+  globals: {
+    "ts-jest": {
+      diagnostics: false,
+    },
+  },
 };
