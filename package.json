@@ -38,7 +38,6 @@
     "build": "rimraf dist && mkdirp dist && rollup -c",
     "test": "jest",
     "test:watch": "jest --watch",
-    "test:coverage": "jest --collect-coverage",
     "type-check": "tsc --noEmit",
     "lint": "tsc --noEmit && eslint . --ext .js,.ts --fix --ignore-path .gitignore"
   },
