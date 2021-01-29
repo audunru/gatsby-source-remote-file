@@ -1,6 +1,6 @@
 # gatsby-source-remote-file
 
-[![Build Status](https://travis-ci.org/audunru/gatsby-source-remote-file.svg?branch=master)](https://travis-ci.org/audunru/gatsby-source-remote-file)
+![Build Status](https://github.com/audunru/gatsby-source-remote-file/workflows/Validate%20and%20publish/badge.svg?branch=master)
 
 ## Description
 
