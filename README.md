@@ -27,10 +27,10 @@ module.exports = {
   plugins: [
     // ... you likely have other plugins here
     {
-      resolve: 'gatsby-source-remote-file',
+      resolve: "gatsby-source-remote-file",
       options: {
-        url: 'https://jsonplaceholder.typicode.com/todos',
-        name: 'todos',
+        url: "https://jsonplaceholder.typicode.com/todos",
+        name: "todos",
       },
     },
     // ... you likely have other plugins here as well
@@ -44,18 +44,18 @@ module.exports = {
 module.exports = {
   plugins: [
     {
-      resolve: 'gatsby-source-remote-file',
+      resolve: "gatsby-source-remote-file",
       options: {
         // The source url of the remote file
-        url: 'https://jsonplaceholder.typicode.com/todos',
+        url: "https://jsonplaceholder.typicode.com/todos",
 
         // OPTIONAL
         // Provide a name for the created node (default: "remote")
-        name: 'todos',
+        name: "todos",
 
         // OPTIONAL
         // The id of the parent node (i.e. the node to which the new remote File node will be linked to.
-        parentNodeId: 'yadi-yadi-yadi',
+        parentNodeId: "yadi-yadi-yadi",
 
         // OPTIONAL
         // Adds htaccess authentication to the download request if passed in.
@@ -67,7 +67,7 @@ module.exports = {
 
         // OPTIONAL
         // Sets the file extension
-        ext: '.json',
+        ext: ".json",
       },
     },
   ],
@@ -88,13 +88,13 @@ exports.onCreateNode = async ({
   createNodeId,
   createContentDigest,
 }) => {
-  if (node.name !== 'todos') return; // 'todos' is the name we gave the remote node in gatsby-config.js, so we only want to transform that
+  if (node.name !== "todos") return; // 'todos' is the name we gave the remote node in gatsby-config.js, so we only want to transform that
 
   try {
     const nodeContent = await loadNodeContent(node);
     const todos = JSON.parse(nodeContent);
 
-    todos.forEach(todo => {
+    todos.forEach((todo) => {
       const childId = createNodeId(`${node.id}${todo.id}`);
       const todoNode = {
         ...todo,
@@ -104,9 +104,9 @@ exports.onCreateNode = async ({
         children: [],
         parent: node.id,
         internal: {
-          type: 'Todo',
+          type: "Todo",
           contentDigest: createContentDigest(todo),
-          description: 'A todo to do for you, toodeloo',
+          description: "A todo to do for you, toodeloo",
         },
       };
       createNode(todoNode);
