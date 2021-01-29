@@ -8,9 +8,14 @@ module.exports = {
       diagnostics: false,
     },
   },
-  globals: {
-    "ts-jest": {
-      diagnostics: false,
+  collectCoverage: true,
+  coverageReporters: ["text"],
+  coverageThreshold: {
+    global: {
+      branches: 100,
+      functions: 100,
+      lines: 100,
+      statements: 100,
     },
   },
 };
