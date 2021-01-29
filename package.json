@@ -34,12 +34,14 @@
     "typescript": "^4.1.3"
   },
   "scripts": {
-    "develop": "tsc --module CommonJS --outDir .",
     "build": "rimraf dist && mkdirp dist && rollup -c",
-    "test": "jest",
+    "develop": "tsc --module CommonJS --outDir .",
+    "prepublishOnly": "yarn build",
+    "style": "eslint . --ext .js,.ts --ignore-path .gitignore",
     "test:watch": "jest --watch",
+    "test": "jest",
     "type-check": "tsc --noEmit",
-    "lint": "tsc --noEmit && eslint . --ext .js,.ts --fix --ignore-path .gitignore"
+    "validate": "yarn style && yarn type-check && yarn test"
   },
   "husky": {
     "hooks": {
