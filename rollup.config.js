@@ -17,7 +17,9 @@ export default {
   ],
   external: [...Object.keys(pkg.dependencies || {}), ...Object.keys(pkg.peerDependencies || {})],
   plugins: [
-    typescript(),
+    typescript({
+      tsconfig: "tsconfig.build.json",
+    }),
     terser(),
     copy({
       targets: [{ src: ["LICENSE", "README.md"], dest: "dist" }],
@@ -35,8 +37,8 @@ export default {
         keywords: pkg.keywords,
         bugs: pkg.bugs,
         homepage: pkg.homepage,
+        peerDependencies: pkg.peerDependencies,
       }),
-      additionalDependencies: ["gatsby"],
     }),
   ],
 };
