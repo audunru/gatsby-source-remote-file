@@ -12,7 +12,6 @@ jobs:
           node-version: "12"
           registry-url: "https://registry.npmjs.org"
       - run: yarn install --frozen-lockfile
-      - run: yarn validate
       - run: yarn build
       - if: startsWith(github.ref, 'refs/tags/v')
         run: yarn publish dist

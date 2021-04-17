@@ -1,6 +1,6 @@
 import { mock, mockDeep } from "jest-mock-extended";
 import { SourceNodesArgs } from "gatsby";
-import { sourceNodes, RemotePluginOptions } from "../src/gatsby-node";
+import { sourceNodes, RemotePluginOptions } from "../gatsby-node";
 
 jest.mock("gatsby-source-filesystem", () => ({
   __esModule: true,
@@ -16,7 +16,7 @@ describe("validation", () => {
     sourceNodes(sourceNodesArgs, {
       ...pluginOptions,
       ...{
-        url: undefined,
+        url: (undefined as unknown) as string,
       },
     });
     expect(sourceNodesArgs.reporter.panicOnBuild).toBeCalledTimes(1);
@@ -30,7 +30,7 @@ describe("validation", () => {
     sourceNodes(sourceNodesArgs, {
       ...pluginOptions,
       ...{
-        url: null,
+        url: (null as unknown) as string,
       },
     });
     expect(sourceNodesArgs.reporter.panicOnBuild).toBeCalledTimes(1);
