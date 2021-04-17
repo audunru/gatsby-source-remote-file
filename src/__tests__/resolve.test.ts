@@ -1,6 +1,6 @@
 import { mock, mockDeep } from "jest-mock-extended";
 import { SourceNodesArgs } from "gatsby";
-import { sourceNodes, RemotePluginOptions } from "../src/gatsby-node";
+import { sourceNodes, RemotePluginOptions } from "../gatsby-node";
 
 jest.mock("gatsby-source-filesystem", () => ({
   __esModule: true,
