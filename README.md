@@ -68,6 +68,11 @@ module.exports = {
         // OPTIONAL
         // Sets the file extension
         ext: ".json",
+
+        // OPTIONAL
+        // If something goes wrong while downloading the remote file,
+        // report a warning instead of stopping the build. (default: "fail")
+        errorHandling: "warn",
       },
     },
   ],
