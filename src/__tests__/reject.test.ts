@@ -1,6 +1,6 @@
 import { mock, mockDeep } from "jest-mock-extended";
-import { SourceNodesArgs } from "gatsby";
-import { sourceNodes, RemotePluginOptions } from "../gatsby-node";
+import { Reporter, SourceNodesArgs } from "gatsby";
+import { sourceNodes, RemotePluginOptions, ErrorHandling } from "../gatsby-node";
 
 jest.mock("gatsby-source-filesystem", () => ({
   __esModule: true,
@@ -8,22 +8,51 @@ jest.mock("gatsby-source-filesystem", () => ({
   createRemoteFileNode: jest.fn().mockRejectedValue("error"),
 }));
 
-describe("promise is rejected", () => {
-  const sourceNodesArgs = mockDeep<SourceNodesArgs>();
-  const pluginOptions = mock<RemotePluginOptions>();
+const sourceNodesArgs = mockDeep<SourceNodesArgs>();
+const pluginOptions = mock<RemotePluginOptions>();
 
-  it("rejects whatever is rejected by createRemoteFileNode", async () => {
-    expect(
-      sourceNodes(sourceNodesArgs, {
-        ...pluginOptions,
-        ...{
+describe("given that sourceNodes is called", () => {
+  describe("when errorHandling is not specified", () => {
+    it("the promise is rejected", async () => {
+      await expect(
+        sourceNodes(sourceNodesArgs, {
+          ...pluginOptions,
           url: "https://vandelay-industries.com/api/exports",
-        },
-      })
-    ).rejects.toEqual("error");
+        })
+      ).rejects.toEqual("error");
+    });
   });
 
-  beforeEach(() => {
-    jest.clearAllMocks();
+  describe("when errorHandling is Reject", () => {
+    it("the promise is rejected", async () => {
+      await expect(
+        sourceNodes(sourceNodesArgs, {
+          ...pluginOptions,
+          url: "https://vandelay-industries.com/api/exports",
+          errorHandling: "fail" as ErrorHandling,
+        })
+      ).rejects.toEqual("error");
+    });
+  });
+
+  describe("when errorHandling is Warn", () => {
+    it("the error is reported as a warning and the promise is not rejected", async () => {
+      const mockReporter = ({
+        warn: jest.fn(),
+      } as unknown) as Reporter;
+      await expect(
+        sourceNodes(
+          { ...sourceNodesArgs, reporter: mockReporter },
+          {
+            ...pluginOptions,
+            url: "https://vandelay-industries.com/api/exports",
+            errorHandling: "warn" as ErrorHandling,
+          }
+        )
+      ).resolves.toBeUndefined();
+
+      expect(mockReporter.warn).toHaveBeenCalledTimes(1);
+      expect(mockReporter.warn).toHaveBeenCalledWith("error");
+    });
   });
 });
