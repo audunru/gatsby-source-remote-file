@@ -16,7 +16,7 @@ describe("validation", () => {
     sourceNodes(sourceNodesArgs, {
       ...pluginOptions,
       ...{
-        url: (undefined as unknown) as string,
+        url: undefined as unknown as string,
       },
     });
     expect(sourceNodesArgs.reporter.panicOnBuild).toBeCalledTimes(1);
@@ -30,7 +30,7 @@ describe("validation", () => {
     sourceNodes(sourceNodesArgs, {
       ...pluginOptions,
       ...{
-        url: (null as unknown) as string,
+        url: null as unknown as string,
       },
     });
     expect(sourceNodesArgs.reporter.panicOnBuild).toBeCalledTimes(1);
