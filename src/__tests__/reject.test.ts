@@ -37,9 +37,9 @@ describe("given that sourceNodes is called", () => {
 
   describe("when errorHandling is Warn", () => {
     it("the error is reported as a warning and the promise is not rejected", async () => {
-      const mockReporter = ({
+      const mockReporter = {
         warn: jest.fn(),
-      } as unknown) as Reporter;
+      } as unknown as Reporter;
       await expect(
         sourceNodes(
           { ...sourceNodesArgs, reporter: mockReporter },
