@@ -15,7 +15,11 @@ jobs:
           registry-url: "https://registry.npmjs.org"
       - run: npm ci
       - run: npm run build
-      - if: startsWith(github.ref, 'refs/tags/v')
+      - if: startsWith(github.ref, 'refs/tags/v') && contains(github.ref, 'beta')
+        run: npm publish dist --provenance --tag beta
+        env:
+          NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
+      - if: startsWith(github.ref, 'refs/tags/v') && !contains(github.ref, 'beta')
         run: npm publish dist --provenance
         env:
           NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
