@@ -44,7 +44,7 @@
     "build": "rollup -c",
     "develop": "tsc -p tsconfig.develop.json",
     "style": "eslint \"src/**/*.{js,ts}\" --max-warnings=10 --cache",
-    "prepublishOnly": "yarn build",
+    "prepublishOnly": "npm run build",
     "commit": "cz",
     "prebuild": "npm-run-all clean validate",
     "clean": "rimraf dist",
@@ -80,8 +80,8 @@
   },
   "homepage": "https://github.com/audunru/gatsby-source-remote-file",
   "engines": {
-    "node": ">=14.0.0",
-    "yarn": ">=1.0.0"
+    "node": ">=18.0.0",
+    "npm": ">=9.0.0"
   },
   "config": {
     "commitizen": {

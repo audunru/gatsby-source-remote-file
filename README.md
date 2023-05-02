@@ -125,7 +125,7 @@ exports.onCreateNode = async ({
 ## How to run tests
 
 ```sh
-yarn test
+npm run test
 ```
 
 ## How to develop locally
@@ -135,8 +135,8 @@ Clone the repository and link it so that you can use it locally and test it in a
 ```sh
 git clone https://github.com/audunru/gatsby-source-remote-file.git
 cd gatsby-source-remote-file
-yarn install
-yarn link
+npm i
+npm link
 ```
 
 Create a new Gatsby project and link the local version of the plugin while you develop:
@@ -144,8 +144,8 @@ Create a new Gatsby project and link the local version of the plugin while you d
 ```sh
 gatsby new gatsby-source-remote-file-test
 cd gatsby-source-remote-file-test
-yarn link "gatsby-source-remote-file"
-yarn add gatsby-source-remote-file
+npm link "gatsby-source-remote-file"
+npm i gatsby-source-remote-file
 ```
 
-You can now make changes in _gatsby-source-remote-file_, run `yarn develop` in the plugin directory and run `yarn develop` in your gatsby directory to test your changes.
+You can now make changes in _gatsby-source-remote-file_, run `npm run develop` in the plugin directory and run `npm run develop` in your gatsby directory to test your changes.
