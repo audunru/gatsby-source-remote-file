@@ -1,20 +1,6 @@
-import { SourceNodesArgs, PluginOptions } from "gatsby";
-import {
-  createRemoteFileNode,
-  CreateRemoteFileNodeArgs,
-  FileSystemNode,
-} from "gatsby-source-filesystem";
-
-export const enum ErrorHandling {
-  Warn = "warn",
-  Fail = "fail",
-}
-
-export type RemotePluginOptions = PluginOptions &
-  Pick<
-    CreateRemoteFileNodeArgs,
-    "url" | "parentNodeId" | "auth" | "httpHeaders" | "ext" | "name"
-  > & { errorHandling: ErrorHandling };
+import { SourceNodesArgs } from "gatsby";
+import { createRemoteFileNode, FileSystemNode } from "gatsby-source-filesystem";
+import { ErrorHandling, RemotePluginOptions } from "./types";
 
 const ERROR_URL_IS_MISSING = 'Plugin option "url" is required';
 const SUCCESS_REMOTE_FILE_DOWNLOADED = "Remote file {0} was downloaded";

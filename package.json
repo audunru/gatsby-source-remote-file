@@ -60,11 +60,6 @@
     "release": "standard-version",
     "release:beta": "standard-version --prerelease beta"
   },
-  "husky": {
-    "hooks": {
-      "pre-commit": "lint-staged"
-    }
-  },
   "lint-staged": {
     "*.{js,ts}": "eslint --cache --fix",
     "*.{js,ts,md,json}": "prettier --write"
