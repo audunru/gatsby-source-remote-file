@@ -13,7 +13,7 @@ export const enum ErrorHandling {
 export type RemotePluginOptions = PluginOptions &
   Pick<
     CreateRemoteFileNodeArgs,
-    "url" | "parentNodeId" | "auth" | "httpHeaders" | "ext" | "name" | "reporter"
+    "url" | "parentNodeId" | "auth" | "httpHeaders" | "ext" | "name"
   > & { errorHandling: ErrorHandling };
 
 const ERROR_URL_IS_MISSING = 'Plugin option "url" is required';

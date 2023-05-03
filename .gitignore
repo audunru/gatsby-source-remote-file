@@ -2,7 +2,6 @@ coverage
 dist
 node_modules
 .DS_Store
-yarn-error.log
 /gatsby-node.*
 /index.*
 .eslintcache
