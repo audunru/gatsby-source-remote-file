@@ -1,23 +1,26 @@
-import typescript from "rollup-plugin-typescript2";
-import { terser } from "rollup-plugin-terser";
+import esbuild from "rollup-plugin-esbuild";
 import copy from "rollup-plugin-copy";
 import generatePackageJson from "rollup-plugin-generate-package-json";
-import pkg from "./package.json";
+import pkg from "./package.json" assert { type: "json" };
+import { defineConfig } from "rollup";
 
-export default {
+const rollupConfig = defineConfig({
   input: "src/gatsby-node.ts",
   output: [
     {
       file: pkg.main,
       format: "cjs",
+      sourcemap: true,
+    },
+    {
+      file: pkg.main.replace(".js", ".mjs"),
+      format: "es",
+      sourcemap: true,
     },
   ],
   external: [...Object.keys(pkg.dependencies || {}), ...Object.keys(pkg.peerDependencies || {})],
   plugins: [
-    typescript({
-      tsconfig: "tsconfig.build.json",
-    }),
-    terser(),
+    esbuild(),
     copy({
       targets: [{ src: ["LICENSE", "README.md"], dest: "dist" }],
     }),
@@ -27,6 +30,7 @@ export default {
         description: pkg.description,
         version: pkg.version,
         main: pkg.main.replace("dist/", ""),
+        module: pkg.module.replace("dist/", ""),
         types: pkg.types.replace("dist/", ""),
         author: pkg.author,
         license: pkg.license,
@@ -38,4 +42,6 @@ export default {
       }),
     }),
   ],
-};
+});
+
+export default rollupConfig;

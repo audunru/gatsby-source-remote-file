@@ -1,4 +1,6 @@
-module.exports = {
+import type { Config } from "jest";
+
+const config: Config = {
   testMatch: ["**/__tests__/**/*.+(ts)", "**/?(*.)+(spec|test).+(ts)"],
   collectCoverage: true,
   coverageReporters: ["text"],
@@ -11,3 +13,5 @@ module.exports = {
     },
   },
 };
+
+export default config;
