@@ -12,11 +12,6 @@ const rollupConfig = defineConfig({
       format: "cjs",
       sourcemap: true,
     },
-    {
-      file: pkg.main.replace(".js", ".mjs"),
-      format: "es",
-      sourcemap: true,
-    },
   ],
   external: [...Object.keys(pkg.dependencies || {}), ...Object.keys(pkg.peerDependencies || {})],
   plugins: [
@@ -30,7 +25,6 @@ const rollupConfig = defineConfig({
         description: pkg.description,
         version: pkg.version,
         main: pkg.main.replace("dist/", ""),
-        module: pkg.module.replace("dist/", ""),
         types: pkg.types.replace("dist/", ""),
         author: pkg.author,
         license: pkg.license,

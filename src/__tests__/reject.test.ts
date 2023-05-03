@@ -1,6 +1,6 @@
 import { mock, mockDeep } from "jest-mock-extended";
 import { Reporter, SourceNodesArgs } from "gatsby";
-import { sourceNodes, RemotePluginOptions, ErrorHandling } from "../gatsby-node";
+import { sourceNodes, RemotePluginOptions } from "../gatsby-node";
 
 jest.mock("gatsby-source-filesystem", () => ({
   __esModule: true,
@@ -29,7 +29,7 @@ describe("given that sourceNodes is called", () => {
         sourceNodes(sourceNodesArgs, {
           ...pluginOptions,
           url: "https://vandelay-industries.com/api/exports",
-          errorHandling: "fail" as ErrorHandling,
+          errorHandling: "fail",
         })
       ).rejects.toEqual("error");
     });
@@ -46,7 +46,7 @@ describe("given that sourceNodes is called", () => {
           {
             ...pluginOptions,
             url: "https://vandelay-industries.com/api/exports",
-            errorHandling: "warn" as ErrorHandling,
+            errorHandling: "warn",
           }
         )
       ).resolves.toBeUndefined();

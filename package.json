@@ -3,7 +3,6 @@
   "description": "Fetch a remote file and use it as a node in Gatsby",
   "version": "0.6.1-beta.1",
   "main": "dist/gatsby-node.js",
-  "module": "dist/gatsby-node.mjs",
   "types": "dist/gatsby-node.d.ts",
   "author": "Audun Rundberg <audun@rundberg.no>",
   "license": "MIT",
